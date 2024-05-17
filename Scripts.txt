@@ -1,0 +1,59 @@
+Mostrar los pods ejecutados en Kubernetes
+echo Mostrando los pods en el clúster Kubernetes...
+kubectl get pods -n default
+
+
+Mostrar los despliegues ejecutados en Kubernetes
+echo Mostrando los despliegues en el clúster Kubernetes...
+kubectl get deployments -n default
+
+
+Mostrar los servicios ejecutados en Kubernetes
+Mostrando los servicios en el clúster Kubernetes...
+
+kubectl get services -n default
+
+
+Mostrar la configuración del Ingress en Kubernetes (Utilizando puerto 80)
+Mostrando la configuración del Ingress en Kubernetes…
+
+kubectl get ingress -n default
+
+
+Mostrar el acceso vía IP externa del servicio al API REST
+Mostrando el acceso vía IP externa del servicio al API REST...
+set /p SERVICE_NAME=Por favor, introduce el nombre del servicio:
+
+kubectl get service %SERVICE_NAME% -n default -o jsonpath="{.status.loadBalancer.ingress[*].ip}"
+
+
+Muestra un ejemplo agregando un elemento
+Agregando un elemento a la API REST...
+
+curl -X POST http://localhost:9000/api/elementos -H "Content-Type: application/json" -d "{\"nombre\":\"Elemento1\", \"descripcion\":\"Descripción del elemento 1\"}"
+
+
+Muestra el listado de todos los elementos
+echo Mostrando el listado de todos los elementos...
+
+curl http://localhost:9000/api/elementos
+
+
+Mostrar el acceso vía dominio a la API REST
+Mostrando el acceso vía dominio a la API REST...
+
+set /p DOMAIN_NAME=Por favor, introduce el nombre del dominio:
+curl http://%DOMAIN_NAME%/api/elementos
+
+
+Muestra un ejemplo actualizando un elemento
+Actualizando un elemento en la API REST...
+set /p ELEMENT_ID=Por favor, introduce el ID del elemento a actualizar:
+
+curl -X PUT http://localhost:9000/api/elementos/%ELEMENT_ID% -H "Content-Type: application/json" -d "{\"nombre\":\"ElementoActualizado\", \"descripcion\":\"Descripción actualizada del elemento\"}"
+
+
+Muestra el listado de todos los elementos
+Mostrando el listado de todos los elementos...
+
+curl http://localhost:9000/api/elementos
