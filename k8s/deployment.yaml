@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: itlinfodocker-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: itlinfodocker
+  template:
+    metadata:
+      labels:
+        app: itlinfodocker
+    spec:
+      containers:
+      - name: itlinfodocker-container
+        image: itldockerizada # Nombre de la imagen Docker que has creado
+        ports:
+        - containerPort: 8080 # Puerto en el que tu API escucha dentro del contenedor
+
+

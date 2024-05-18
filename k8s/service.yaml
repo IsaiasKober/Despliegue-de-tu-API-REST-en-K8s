@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: itlinfodocker-service
+spec:
+  selector:
+    app: itlinfodocker
+  ports:
+    - protocol: TCP
+      port: 80 # El puerto que deseas exponer fuera del clúster
+      targetPort: 8080 # El puerto en el que tu API escucha dentro del contenedor
+  type: LoadBalancer # Tipo de servicio para exponer fuera del clúster
